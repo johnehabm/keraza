@@ -1,5 +1,5 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server'
-import AdminWeeksClient from './AdminWeeksClient'
+import AdminWeeksClient from './EditWeekClient'
 
 // تعديل هنا: خلي الـ params عبارة عن Promise
 export default async function AdminWeeksPage({
@@ -18,5 +18,5 @@ export default async function AdminWeeksPage({
     .select('*, exams(id, title), questions(id)')
     .order('week_number')
 
-  return <AdminWeeksClient weeks={weeks || []} />
+  return <EditWeekClient weeks={weeks || []} />
 }
