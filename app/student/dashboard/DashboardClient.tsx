@@ -84,37 +84,37 @@ const mockLeaderboard: LeaderboardEntry[] = [
 
 // ─── Design System ─────────────────────────────────────────────────────────────
 const D = {
-  gradPrimary:  'linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)',
-  gradSuccess:  'linear-gradient(135deg, #059669 0%, #0ea5e9 100%)',
-  gradWarning:  'linear-gradient(135deg, #d97706 0%, #dc2626 100%)',
-  gradStreak:   'linear-gradient(135deg, #f97316, #ef4444)',
-  glowPurple:   '0 0 28px rgba(124,58,237,0.2), 0 4px 16px rgba(124,58,237,0.12)',
-  glowGold:     '0 0 24px rgba(245,158,11,0.3)',
-  glowTeal:     '0 0 20px rgba(14,165,233,0.22)',
+  gradPrimary: 'linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)',
+  gradSuccess: 'linear-gradient(135deg, #059669 0%, #0ea5e9 100%)',
+  gradWarning: 'linear-gradient(135deg, #d97706 0%, #dc2626 100%)',
+  gradStreak: 'linear-gradient(135deg, #f97316, #ef4444)',
+  glowPurple: '0 0 28px rgba(124,58,237,0.2), 0 4px 16px rgba(124,58,237,0.12)',
+  glowGold: '0 0 24px rgba(245,158,11,0.3)',
+  glowTeal: '0 0 20px rgba(14,165,233,0.22)',
 }
 
 const tokens = {
   dark: {
-    bg:           'linear-gradient(160deg,#060818 0%,#0e1027 50%,#080f1f 100%)',
-    cardBg:       'rgba(255,255,255,0.035)',
-    surface:      'rgba(255,255,255,0.06)',
-    border:       'rgba(255,255,255,0.07)',
+    bg: 'linear-gradient(160deg,#060818 0%,#0e1027 50%,#080f1f 100%)',
+    cardBg: 'rgba(255,255,255,0.035)',
+    surface: 'rgba(255,255,255,0.06)',
+    border: 'rgba(255,255,255,0.07)',
     borderAccent: 'rgba(124,58,237,0.35)',
-    text:         '#f1f5f9',
-    textMuted:    '#94a3b8',
-    textSubtle:   'rgba(255,255,255,0.38)',
-    navBg:        'rgba(6,8,24,0.82)',
+    text: '#f1f5f9',
+    textMuted: '#94a3b8',
+    textSubtle: 'rgba(255,255,255,0.38)',
+    navBg: 'rgba(6,8,24,0.82)',
   },
   light: {
-    bg:           'linear-gradient(160deg,#f8f9ff 0%,#eef1ff 50%,#f4f6ff 100%)',
-    cardBg:       'rgba(255,255,255,0.9)',
-    surface:      'rgba(255,255,255,0.98)',
-    border:       'rgba(99,102,241,0.12)',
+    bg: 'linear-gradient(160deg,#f8f9ff 0%,#eef1ff 50%,#f4f6ff 100%)',
+    cardBg: 'rgba(255,255,255,0.9)',
+    surface: 'rgba(255,255,255,0.98)',
+    border: 'rgba(99,102,241,0.12)',
     borderAccent: 'rgba(124,58,237,0.28)',
-    text:         '#1e1b4b',
-    textMuted:    '#6366f1',
-    textSubtle:   'rgba(30,27,75,0.42)',
-    navBg:        'rgba(255,255,255,0.88)',
+    text: '#1e1b4b',
+    textMuted: '#6366f1',
+    textSubtle: 'rgba(30,27,75,0.42)',
+    navBg: 'rgba(255,255,255,0.88)',
   },
 }
 
@@ -204,7 +204,7 @@ export default function DashboardClient({
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               fontSize: 17, boxShadow: D.glowPurple,
             }}>✝</div>
-            <span style={{ fontWeight: 800, fontSize: 15, letterSpacing: '0.01em' }}>مهرجان الكرازة</span>
+            <span style={{ fontWeight: 800, fontSize: 15, letterSpacing: '0.01em' }}> اسرة الشهداء - اعداي بنين</span>
           </div>
 
           {/* Desktop tabs */}
