@@ -6,6 +6,6 @@
         "nodejs_compat"
     ],
     "assets": {
-        "directory": ".next/static"
+        "directory": ".next/standalone/.next/static"
     }
 }
