@@ -1,27 +1,22 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server'
-import EditWeekClient from './EditWeekClient'
-import { notFound } from 'next/navigation'
+import AdminWeeksClient from './AdminWeeksClient'
 
-export default async function EditWeekPage({ params }: { params: { id: string } }) {
-    const supabase = await createServerSupabaseClient()
+// تعديل هنا: خلي الـ params عبارة عن Promise
+export default async function AdminWeeksPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  // فك الـ Promise عشان تجيب الـ id
+  const { id } = await params
 
-    // جلب بيانات الأسبوع مع الامتحانات والأسئلة الخاصة به
-    const { data: week } = await supabase
-        .from('weeks')
-        .select(`
-      *,
-      exams (
-        *,
-        questions (*)
-      )
-    `)
-        .eq('id', params.id)
-        .single()
+  const supabase = await createServerSupabaseClient()
 
-    // لو الـ ID غلط أو الأسبوع ممسوح، رجع صفحة 404
-    if (!week) {
-        notFound()
-    }
+  // استخدم الـ id اللي جبناه من الـ params
+  const { data: weeks } = await supabase
+    .from('weeks')
+    .select('*, exams(id, title), questions(id)')
+    .order('week_number')
 
-    return <EditWeekClient initialData={week} weekId={params.id} />
+  return <AdminWeeksClient weeks={weeks || []} />
 }
