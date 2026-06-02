@@ -1,12 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  output: 'standalone', // ده الجزء اللي كان ناقص!
-  webpack: (config, { dev, isServer }) => {
-    if (!dev) {
-      config.cache = false; // تعطيل الكاش في وضع الإنتاج
-    }
-    return config;
+  // هذا السطر هو الأهم لأنه يخبر Next.js أن يبني نسخة مستقلة تعمل على السيرفر
+  output: 'standalone', 
+  
+  // إعدادات إضافية اختيارية
+  images: {
+    unoptimized: true, // مهم جداً لأن Cloudflare Pages لا يدعم Image Optimization الافتراضي
   },
 };
 
