@@ -21,8 +21,9 @@ export async function POST(
         const { newPassword } = await request.json()
 
         // 2. تحديث الباسورد باستخدام صلاحيات الأدمن القصوى
+        // هنا تم التعديل: استخدمنا id بدل params.id
         const { data, error } = await serviceClient.auth.admin.updateUserById(
-            params.id,
+            id,
             { password: newPassword }
         )
 

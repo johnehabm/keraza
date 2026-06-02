@@ -2,7 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient, createServiceRoleClient } from '@/lib/supabase/server'
 import { assertAdmin } from '@/lib/auth/admin'
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+
   try {
     const supabase = await createServerSupabaseClient()
     const serviceClient = createServiceRoleClient()
@@ -12,8 +17,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     if (!(await assertAdmin(user.id))) return NextResponse.json({ error: 'ليس لديك صلاحية' }, { status: 403 })
 
     const data = await request.json()
-    const weekId = params.id
-
+    const weekId = id;
     const { error: weekError } = await serviceClient
       .from('weeks')
       .update({
@@ -89,7 +93,12 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+
   try {
     const supabase = await createServerSupabaseClient()
     const serviceClient = createServiceRoleClient()
@@ -101,7 +110,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
     const { error } = await serviceClient
       .from('weeks')
       .delete()
-      .eq('id', params.id)
+      .eq('id', id)
 
     if (error) throw error
 
