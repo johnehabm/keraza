@@ -1,0 +1,5 @@
+name = "keraza"
+pages_build_output_dir = ".next"
+
+[build]
+command = "npm run build"
