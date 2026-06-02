@@ -1,8 +1,7 @@
 import { createServerSupabaseClient } from '@/lib/supabase/server'
-import AdminWeeksClient from './EditWeekClient'
+import EditWeekClient from './EditWeekClient'
 
-// تعديل هنا: خلي الـ params عبارة عن Promise
-export default async function AdminWeeksPage({
+export default async function EditWeekPage({
   params,
 }: {
   params: Promise<{ id: string }>
@@ -12,11 +11,13 @@ export default async function AdminWeeksPage({
 
   const supabase = await createServerSupabaseClient()
 
-  // استخدم الـ id اللي جبناه من الـ params
-  const { data: weeks } = await supabase
+  // جلب بيانات الأسبوع المحدد فقط باستخدام الـ id
+  const { data: week } = await supabase
     .from('weeks')
-    .select('*, exams(id, title), questions(id)')
-    .order('week_number')
+    .select('*, exams(id, title, xp_reward_full, xp_reward_partial, passing_score, description), questions(*)')
+    .eq('id', id)
+    .single() // استخدمنا single عشان يجيب أسبوع واحد بس مش قائمة
 
-  return <EditWeekClient weeks={weeks || []} />
+  // تمرير البيانات بالأسماء اللي الـ Component طالبها بالظبط
+  return <EditWeekClient initialData={week} weekId={id} />
 }
