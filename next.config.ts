@@ -1,12 +1,7 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  // هذا السطر هو الأهم لأنه يخبر Next.js أن يبني نسخة مستقلة تعمل على السيرفر
-  output: 'standalone', 
-  
-  // إعدادات إضافية اختيارية
+const nextConfig = {
+  output: 'standalone', // ده بيخلي الـ build خفيف ومناسب للسيرفرات
   images: {
-    unoptimized: true, // مهم جداً لأن Cloudflare Pages لا يدعم Image Optimization الافتراضي
+    unoptimized: true,
   },
 };
 
