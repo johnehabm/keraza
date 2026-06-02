@@ -1,8 +1,7 @@
 const nextConfig = {
-  output: 'standalone', // ده بيخلي الـ build خفيف ومناسب للسيرفرات
+  output: 'export', // هذا هو التغيير الجوهري
   images: {
     unoptimized: true,
   },
 };
-
 export default nextConfig;
