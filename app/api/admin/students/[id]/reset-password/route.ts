@@ -2,7 +2,13 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient, createServiceRoleClient } from '@/lib/supabase/server'
 import { assertAdmin } from '@/lib/auth/admin'
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(
+    request: NextRequest,
+    { params }: { params: Promise<{ id: string }> }
+) {
+    // فك الـ Promise عشان تجيب الـ id
+    const { id } = await params;
+
     try {
         const supabase = await createServerSupabaseClient()
         const serviceClient = createServiceRoleClient()
